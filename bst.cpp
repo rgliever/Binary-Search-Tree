@@ -70,12 +70,25 @@ node *delete_node(int id, node *root) {
   return root;
 }
 
+bool isBST(node *root) {
+  // determine if a binary tree is a BST by inorder traversal
+  if(root) {
+    isBST(root->left);
+    if ((root->left) && (root->left->id > root->id)) return false;
+    if ((root->right) && (root->right->id <= root->id)) return false;
+    //cout << "# " << root->id << "\n";
+    isBST(root->right);
+  }
+  return true;
+}
+
 void opening_msg() {
   std::cout << std::string(100, '*') << "\n";
   std::cout << "This program allows insertion and deletion of nodes in a binary search tree by user input.\n";
   std::cout << "Input 'i ' followed by an integer to insert a node with that value into the BST.\n";
   std::cout << "Input 'd ' followed by an integer to delete the first occurence of a node with that value from the BST.\n";
   std::cout << "The BST is printed automatically after each insertion/deletion. The left subtree is printed before the right subtree.\n";
+  std::cout << "Input 'check' to see if the tree is a BST (should always be true ;])\n"
   std::cout << "Input 'q' to quit the program.\n";
   std::cout << "By Ryan Gliever, 2015.\n";
   std::cout << std::string(100, '*') << "\n";
@@ -107,6 +120,9 @@ int main() {
         int id = atoi(parsed);
         root = delete_node(id, root);
         print_bst(root, 0);
+      }
+      else if(!strcmp(parsed, "check\n")) {
+        isBST(root) ? (cout << "Tree is BST\n") : (cout << "Tree is not BST\n");
       }
       else cout << "I did not understand your request.\n";
       break;
