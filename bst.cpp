@@ -88,7 +88,7 @@ void opening_msg() {
   std::cout << "Input 'i ' followed by an integer to insert a node with that value into the BST.\n";
   std::cout << "Input 'd ' followed by an integer to delete the first occurence of a node with that value from the BST.\n";
   std::cout << "The BST is printed automatically after each insertion/deletion. The left subtree is printed before the right subtree.\n";
-  std::cout << "Input 'check' to see if the tree is a BST (should always be true ;])\n"
+  std::cout << "Input 'check' to see if the tree is a BST (should always be true ;])\n";
   std::cout << "Input 'q' to quit the program.\n";
   std::cout << "By Ryan Gliever, 2015.\n";
   std::cout << std::string(100, '*') << "\n";
